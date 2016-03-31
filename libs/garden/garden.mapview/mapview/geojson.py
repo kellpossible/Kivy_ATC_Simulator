@@ -252,6 +252,14 @@ class GeoJsonMapLayer(MapLayer):
         self.canvas_line.clear()
         self._geojson_part(geojson, geotype="LineString")
 
+    def on_source(self, instance, value):
+        if value.startswith("http://") or value.startswith("https://"):
+            Downloader.instance().download(value, self._load_geojson_url)
+        else:
+            with open(value, "rb") as fd:
+                geojson = json.load(fd)
+            self.geojson = geojson
+
     def _load_geojson_url(self, url, r):
         self.geojson = r.json()
 

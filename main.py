@@ -1,3 +1,25 @@
+from os.path import join, dirname
+import math
+import datetime
+import dateutil.parser
+
+import os, sys, inspect
+
+import re
+
+#this is a test
+
+#sys.path.append("/home/luke/Dropbox/Uni/2016/SWE40001/Aircraft_Direction_Predition_FYRP/src/Kivy_ATC_Simulator/libs/garden")
+
+#from mapview import MapView, MapMarker, MapLayer
+
+
+from kivy.utils import platform
+if platform == "android":
+    from os.path import join, dirname
+    import kivy.garden
+    kivy.garden.garden_app_dir = join(dirname(__file__), "libs", "garden")
+
 from kivy.garden.mapview import MapView, MapMarker, MapLayer
 from kivy.base import runTouchApp
 
@@ -5,16 +27,6 @@ from kivy.properties import StringProperty, ObjectProperty
 from kivy.graphics import (Canvas, PushMatrix, PopMatrix, MatrixInstruction,
 						   Translate, Scale, Line, Color)
 from kivy.utils import get_color_from_hex
-
-from os.path import join, dirname
-import math
-import datetime
-import dateutil.parser
-import csv
-
-import re
-
-#this is a test
 
 class NavObject(object):
 	def __init__(self, ICAO_id, latitude, longitude, **kwargs):
@@ -128,9 +140,12 @@ track_entries = []
 
 print("parsing track.csv")
 with open("YMML2YSCB_track.csv", 'rb') as csvfile:
-	trackreader = csv.reader(csvfile)
-	for row in trackreader:
-		print(row)
+	for line in csvfile:
+		row_old = line.split(',')
+		row = []
+		for item in row_old:
+			row.append(item.strip())
+
 		time = dateutil.parser.parse(row[0])
 		longitude = float(row[1])
 		latitude = float(row[2])

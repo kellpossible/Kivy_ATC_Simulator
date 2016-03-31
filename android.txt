@@ -1,0 +1,3 @@
+title=Kivy Atc Simulator
+author=Luke Frisken
+orientation=landscape
