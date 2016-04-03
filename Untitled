@@ -1,0 +1,21 @@
+public class Position
+{
+  private double fLatitude;
+  private double fLongitude;
+
+  public Position(double aLatitude, aLongitude)
+  {
+    fLatitude = aLatitude;
+    fLongitude = aLatitude;
+  }
+
+  public double getLatitude()
+  {
+    return fLatitude;
+  }
+
+  public double getLongitude()
+  {
+    return fLongitude;
+  }
+}
