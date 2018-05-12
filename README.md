@@ -1,5 +1,5 @@
 # Kivy ATC Simulator
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE.txt)
 
 An air traffic control simulator written in python using the kivy framework and the mapview addon.
 
